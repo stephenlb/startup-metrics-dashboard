@@ -93,6 +93,10 @@
   font-size: 0.66em;
   font-weight: 100;
 }
+.raw-values {
+  cursor: pointer;
+  z-index: 100;
+}
 .c100 div.title {
   position: absolute;
   width: 100%;

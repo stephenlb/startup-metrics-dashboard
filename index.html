@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>PubNub Marketing Report</title>
+    <title>Startup Metrics Dashboard</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<!-- Metric Circles -->
+<!-- Startup Metric Circles -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 
 <div class="container">
@@ -27,9 +27,9 @@
 
         <!-- Acquisition -->
         <div class="col-xs-3">
-            <div id="pc_acquisitions" class="c100 p50 big teal">
-                <span id="percent_acquisitions">50<sup>%</sup></span>
-                <div class="title">acquisitions</div>
+            <div id="pc_acquisition" class="c100 p50 big teal">
+                <span id="percent_acquisition">50<sup>%</sup></span>
+                <div class="title">acquisition</div>
                 <div class="allstars">
                     <div class="starhover">
                         <div class="star starshine1"></div>
@@ -42,8 +42,8 @@
                     </div>
                 </div>
                 <div class="raw-values">
-                    <span id="acquisitions">500</span>
-                    <sup>/<span id="goal_acquisitions">200<span></sup>
+                    <span id="acquisition">500</span>
+                    <sup>/<span id="acquisition_goal">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -54,9 +54,9 @@
 
         <!-- Activation -->
         <div class="col-xs-3">
-            <div id="pc_activations" class="c100 p50 big cyan">
-                <span id="percent_activations">50<sup>%</sup></span>
-                <div class="title">activations</div>
+            <div id="pc_activation" class="c100 p50 big cyan">
+                <span id="percent_activation">50<sup>%</sup></span>
+                <div class="title">activation</div>
                 <div class="allstars">
                     <div class="starhover">
                         <div class="star starshine1"></div>
@@ -69,8 +69,8 @@
                     </div>
                 </div>
                 <div class="raw-values">
-                    <span id="activations">500</span>
-                    <sup>/<span id="goal_activations">200<span></sup>
+                    <span id="activation">500</span>
+                    <sup>/<span id="activation_goal">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="raw-values">
                     <span id="retention">500</span>
-                    <sup>/<span id="goal_retention">200<span></sup>
+                    <sup>/<span id="retention_goal">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -124,7 +124,7 @@
                 </div>
                 <div class="raw-values">
                     <span id="revenue">500</span>
-                    <sup>/<span id="goal_revenue">200<span></sup>
+                    <sup>/<span id="revenue_goal">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -138,7 +138,7 @@
 
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<!-- VANITY -->
+<!-- Starup Metrics - Referrals / Vanity -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 
 <div class="container">
@@ -150,54 +150,54 @@
 
         <div class="row vanity-table">
 
-            <!-- ======== -->
+            <!-- =-=-=-=-= -->
             <!-- MENTIONS -->
-            <!-- ======== -->
+            <!-- =-=-=-=-= -->
             <div class="col-xs-3 vanity-table-value">
                 <div><img src="img/twitter.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
-                    %(mentions)s
+                    <span id="mentions">50</span>
                 </div>
                 <div class="vanity-table-label">MENTIONS</div>
             </div>
 
-            <!-- ========= -->
+            <!-- =-=-=-=-= -->
             <!-- ATTENDIES -->
-            <!-- ========= -->
+            <!-- =-=-=-=-= -->
             <div class="col-xs-3 vanity-table-value">
                 <div><img src="img/meetup.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
-                    %(attendees)s
+                    <span id="attendees">50</span>
                 </div>
                 <div class="vanity-table-label">ATTENDEES</div>
             </div>
 
-            <!-- ======== -->
+            <!-- =-=-=-=-= -->
             <!-- ARTICLES -->
-            <!-- ======== -->
+            <!-- =-=-=-=-= -->
             <div class="col-xs-3 vanity-table-value">
                 <div><img src="img/wordpress.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
-                    %(articles)s
+                    <span id="articles">50</span>
                 </div>
                 <div class="vanity-table-label">ARTICLES</div>
             </div>
 
-            <!-- ============= -->
+            <!-- =-=-=-=-=-=-= -->
             <!-- STACKOVERFLOW -->
-            <!-- ============= -->
+            <!-- =-=-=-=-=-=-= -->
             <div class="col-xs-3 vanity-table-value">
                 <div><img src="img/stackoverflow.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
-                    %(stackoverflow)s
+                    <span id="stackoverflow">50</span>
                 </div>
                 <div class="vanity-table-label">STACKOVERFLOW</div>
             </div>
@@ -224,6 +224,9 @@
         metrics
     </div>
 </div>
+
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="js/startup-metrics.js"></script>
 
 </body>
 </html>
