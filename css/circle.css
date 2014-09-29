@@ -118,7 +118,7 @@
 }
 div.allstars div.star {
     display: inline-block;
-    background: transparent url(star.png);
+    background: transparent url(../img/star.png);
     background-size: 100%;
     width: 40px;
     height: 40px;

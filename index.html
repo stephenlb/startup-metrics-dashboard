@@ -17,19 +17,19 @@
 <div class="container">
     <div class="section-header">
         <div class="relative"><div class="pubnub-logo"></div></div>
-        Marketing <strong>Monthly</strong>
-        <span> &nbsp; |&nbsp; Goals </span>
+        Startup <strong>Metrics</strong>
+        <span> &nbsp; |&nbsp; Weekly Goals </span>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
 
-        <!-- READERS -->
+        <!-- Acquisition -->
         <div class="col-xs-3">
-            <div class="c100 p%(pc_readers)s big teal">
-                <span>%(percent_readers)s<sup>%%</sup></span>
-                <div class="title">readers</div>
+            <div id="pc_acquisitions" class="c100 p50 big teal">
+                <span id="percent_acquisitions">50<sup>%</sup></span>
+                <div class="title">acquisitions</div>
                 <div class="allstars">
                     <div class="starhover">
                         <div class="star starshine1"></div>
@@ -42,7 +42,8 @@
                     </div>
                 </div>
                 <div class="raw-values">
-                    %(readers)s<sup>/%(goal_readers)s</sup>
+                    <span id="acquisitions">500</span>
+                    <sup>/<span id="goal_acquisitions">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -51,11 +52,11 @@
             </div>
         </div>
 
-        <!-- LEADS -->
+        <!-- Activation -->
         <div class="col-xs-3">
-            <div class="c100 p%(pc_leads)s big cyan">
-                <span>%(percent_leads)s<sup>%%</sup></span>
-                <div class="title">leads</div>
+            <div id="pc_activations" class="c100 p50 big cyan">
+                <span id="percent_activations">50<sup>%</sup></span>
+                <div class="title">activations</div>
                 <div class="allstars">
                     <div class="starhover">
                         <div class="star starshine1"></div>
@@ -68,7 +69,8 @@
                     </div>
                 </div>
                 <div class="raw-values">
-                    %(leads)s<sup>/%(goal_leads)s</sup>
+                    <span id="activations">500</span>
+                    <sup>/<span id="goal_activations">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -77,11 +79,11 @@
             </div>
         </div>
 
-        <!-- TESTERS -->
+        <!-- Retention -->
         <div class="col-xs-3">
-            <div class="c100 p%(pc_testers)s big lime">
-                <span>%(percent_testers)s<sup>%%</sup></span>
-                <div class="title">testers</div>
+            <div id="pc_retention" class="c100 p50 big cyan">
+                <span id="percent_retention">50<sup>%</sup></span>
+                <div class="title">retention</div>
                 <div class="allstars">
                     <div class="starhover">
                         <div class="star starshine1"></div>
@@ -94,7 +96,8 @@
                     </div>
                 </div>
                 <div class="raw-values">
-                    %(testers)s<sup>/%(goal_testers)s</sup>
+                    <span id="retention">500</span>
+                    <sup>/<span id="goal_retention">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -103,11 +106,11 @@
             </div>
         </div>
 
-        <!-- TRIALS -->
+        <!-- Revenue -->
         <div class="col-xs-3">
-            <div class="c100 p%(pc_trials)s big orange">
-                <span>%(percent_trials)s<sup>%%</sup></span>
-                <div class="title">trials</div>
+            <div id="pc_revenue" class="c100 p50 big cyan">
+                <span id="percent_revenue">50<sup>%</sup></span>
+                <div class="title">revenue</div>
                 <div class="allstars">
                     <div class="starhover">
                         <div class="star starshine1"></div>
@@ -120,7 +123,8 @@
                     </div>
                 </div>
                 <div class="raw-values">
-                    %(trials)s<sup>/%(goal_trials)s</sup>
+                    <span id="revenue">500</span>
+                    <sup>/<span id="goal_revenue">200<span></sup>
                 </div>
                 <div class="slice">
                     <div class="bar"></div>
@@ -150,7 +154,7 @@
             <!-- MENTIONS -->
             <!-- ======== -->
             <div class="col-xs-3 vanity-table-value">
-                <div><img src="blog/twitter.png"></div>
+                <div><img src="img/twitter.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
@@ -163,7 +167,7 @@
             <!-- ATTENDIES -->
             <!-- ========= -->
             <div class="col-xs-3 vanity-table-value">
-                <div><img src="blog/meetup.png"></div>
+                <div><img src="img/meetup.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
@@ -176,7 +180,7 @@
             <!-- ARTICLES -->
             <!-- ======== -->
             <div class="col-xs-3 vanity-table-value">
-                <div><img src="blog/wordpress.png"></div>
+                <div><img src="img/wordpress.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
@@ -189,7 +193,7 @@
             <!-- STACKOVERFLOW -->
             <!-- ============= -->
             <div class="col-xs-3 vanity-table-value">
-                <div><img src="blog/stackoverflow.png"></div>
+                <div><img src="img/stackoverflow.png"></div>
                 <div class="vanity-table-value">
                     <span class="relative"><span class="vanity-plus">
                     +</span></span>
