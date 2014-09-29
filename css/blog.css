@@ -1,0 +1,102 @@
+.section-header {
+    margin: 50px 0;
+    font-size: 16px;
+    color: #aaa;
+    text-transform: uppercase;
+}
+.section-header span {
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+.blog-bg {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: transparent url(../img/blog-bg.jpg);
+    color: #fff;
+}
+.blog-bg .section-header {
+    color: #fff;
+}
+
+.vanity-table {
+    text-align: center;
+    margin: 20px 0 50px 0;
+}
+.vanity-plus {
+    position: absolute;
+    top: 2px;
+    left: -38px;
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: 100;
+    color: rgba(225,255,225,0.9);
+}
+.vanity-table > div {
+    text-align: center;
+    text-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
+.vanity-table > div.vanity-table-sep {
+    border: 0;
+    text-align: center;
+}
+
+.vanity-table-value {
+    text-align: center;
+    font-size: 60px;
+    font-weight: 100;
+}
+.vanity-table-label {
+    text-align: center;
+    font-weight: 100;
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    margin: 5px 0;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 10px;
+}
+.vanity-table img {
+    width: 50px;
+    height: 50px;
+}
+
+.super-header {
+    opacity: 0.7;
+    color: #c02024;
+    margin: 120px 0px 0px 0px;
+    letter-spacing: -3px;
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 200;
+    text-align: center;
+}
+.super-header span {
+    color: rgba(0,0,0,0.1);
+    font-size: 40px;
+    line-height: 50px;
+}
+.super-sub-header {
+    color: rgba(0,0,0,0.2);
+    margin: 1px 0px 0px 0px;
+    font-size: 20px;
+    line-height: 50px;
+    font-weight: 200;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.pubnub-logo {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: url(../img/pubnub.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 19px;
+    width: 86px;
+}
+.relative {
+    position: relative;
+}

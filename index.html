@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>PubNub Marketing Report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/circle.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- Metric Circles -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
+<div class="container">
+    <div class="section-header">
+        <div class="relative"><div class="pubnub-logo"></div></div>
+        Marketing <strong>Monthly</strong>
+        <span> &nbsp; |&nbsp; Goals </span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <!-- READERS -->
+        <div class="col-xs-3">
+            <div class="c100 p%(pc_readers)s big teal">
+                <span>%(percent_readers)s<sup>%%</sup></span>
+                <div class="title">readers</div>
+                <div class="allstars">
+                    <div class="starhover">
+                        <div class="star starshine1"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine2"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine3"></div>
+                    </div>
+                </div>
+                <div class="raw-values">
+                    %(readers)s<sup>/%(goal_readers)s</sup>
+                </div>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEADS -->
+        <div class="col-xs-3">
+            <div class="c100 p%(pc_leads)s big cyan">
+                <span>%(percent_leads)s<sup>%%</sup></span>
+                <div class="title">leads</div>
+                <div class="allstars">
+                    <div class="starhover">
+                        <div class="star starshine1"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine2"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine3"></div>
+                    </div>
+                </div>
+                <div class="raw-values">
+                    %(leads)s<sup>/%(goal_leads)s</sup>
+                </div>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TESTERS -->
+        <div class="col-xs-3">
+            <div class="c100 p%(pc_testers)s big lime">
+                <span>%(percent_testers)s<sup>%%</sup></span>
+                <div class="title">testers</div>
+                <div class="allstars">
+                    <div class="starhover">
+                        <div class="star starshine1"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine2"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine3"></div>
+                    </div>
+                </div>
+                <div class="raw-values">
+                    %(testers)s<sup>/%(goal_testers)s</sup>
+                </div>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRIALS -->
+        <div class="col-xs-3">
+            <div class="c100 p%(pc_trials)s big orange">
+                <span>%(percent_trials)s<sup>%%</sup></span>
+                <div class="title">trials</div>
+                <div class="allstars">
+                    <div class="starhover">
+                        <div class="star starshine1"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine2"></div>
+                    </div>
+                    <div class="starhover">
+                        <div class="star starshine3"></div>
+                    </div>
+                </div>
+                <div class="raw-values">
+                    %(trials)s<sup>/%(goal_trials)s</sup>
+                </div>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- VANITY -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
+<div class="container">
+    <div class="section-header">&nbsp;</div>
+</div>
+
+<div class="blog-bg">
+    <div class="container">
+
+        <div class="row vanity-table">
+
+            <!-- ======== -->
+            <!-- MENTIONS -->
+            <!-- ======== -->
+            <div class="col-xs-3 vanity-table-value">
+                <div><img src="blog/twitter.png"></div>
+                <div class="vanity-table-value">
+                    <span class="relative"><span class="vanity-plus">
+                    +</span></span>
+                    %(mentions)s
+                </div>
+                <div class="vanity-table-label">MENTIONS</div>
+            </div>
+
+            <!-- ========= -->
+            <!-- ATTENDIES -->
+            <!-- ========= -->
+            <div class="col-xs-3 vanity-table-value">
+                <div><img src="blog/meetup.png"></div>
+                <div class="vanity-table-value">
+                    <span class="relative"><span class="vanity-plus">
+                    +</span></span>
+                    %(attendees)s
+                </div>
+                <div class="vanity-table-label">ATTENDEES</div>
+            </div>
+
+            <!-- ======== -->
+            <!-- ARTICLES -->
+            <!-- ======== -->
+            <div class="col-xs-3 vanity-table-value">
+                <div><img src="blog/wordpress.png"></div>
+                <div class="vanity-table-value">
+                    <span class="relative"><span class="vanity-plus">
+                    +</span></span>
+                    %(articles)s
+                </div>
+                <div class="vanity-table-label">ARTICLES</div>
+            </div>
+
+            <!-- ============= -->
+            <!-- STACKOVERFLOW -->
+            <!-- ============= -->
+            <div class="col-xs-3 vanity-table-value">
+                <div><img src="blog/stackoverflow.png"></div>
+                <div class="vanity-table-value">
+                    <span class="relative"><span class="vanity-plus">
+                    +</span></span>
+                    %(stackoverflow)s
+                </div>
+                <div class="vanity-table-label">STACKOVERFLOW</div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- M.E.T.R.I.C.S -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
+<div class="container">
+    <div class="super-header">
+        P <span>&bullet;</span>
+        U <span>&bullet;</span>
+        B <span>&bullet;</span>
+        N <span>&bullet;</span>
+        U <span>&bullet;</span>
+        B 
+    </div>
+    <div class="super-sub-header">
+        metrics
+    </div>
+</div>
+
+</body>
+</html>
