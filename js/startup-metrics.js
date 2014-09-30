@@ -15,11 +15,18 @@ var pubnub = PUBNUB(settings);
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Startup Metrics Default Dashboard Position
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-var startupmetrics = {
+var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
+
     // Whitelable
     title            : "Startup",
     subtitle         : "Weekly Goals",
     logo_img         : "img/pubnub.png",
+
+    // Vanity Labels
+    'vanity-one'     : 'MENTIONS',
+    'vanity-two'     : 'ATTENDEES',
+    'vanity-three'   : 'ARTICLES',
+    'vanity-four'    : 'STACKOVERFLOW',
 
     // Acquisition
     acquisition      : 2,
@@ -42,7 +49,25 @@ var startupmetrics = {
     attendees        : 1,
     articles         : 1,
     stackoverflow    : 1
+
 };
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Bootstrap Startup Metrics
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+pubnub.history({
+    limit    : 1,
+    channel  : settings.channel,
+    callback : function(msgs) { save(msgs[0][0] || {}) }
+});
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Live Startup Metrics
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+pubnub.subscribe({
+    channel : settings.channel,
+    message : function(msg) { save(msg) }
+});
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Update Startup Metrics
@@ -76,8 +101,12 @@ function update_metrics(startup) {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Save Startup Metrics
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-function save(modification) {
+function save( modification, broadcast ) {
+    console.log( 'modification',modification);
     PUBNUB.each( modification, function( k, v ) { startupmetrics[k] = v } );
+    PUBNUB.db.set( settings.channel, JSON.stringify(startupmetrics) );
+    update_metrics(startupmetrics);
+    if (!broadcast) return;
     pubnub.publish({ channel : settings.channel, message : startupmetrics });
 }
 
@@ -91,7 +120,8 @@ function update_circle_metrics( name, value, goal ) {
     ,   resmax  = (result > 999 ? 999 : result)
     ,   pclass  = ' p' + (result > 100 ? 100 : result);
 
-    circle.className  = circle.className.replace( / p\d+/, pclass );
+    circle.className  = circle.className.replace( / p[^ ]+/, ' p00' );
+    circle.className  = circle.className.replace( / p[^ ]+/, pclass );
     percent.innerHTML = resmax + '<sup>%</sup>';
 }
 
@@ -107,17 +137,12 @@ PUBNUB.bind( 'mousedown,touchstart', document, function(element) {
     // Ignore Clicking Editor Controls
     if (!id || id.indexOf('editor') >= 0) return true;
 
-    // Show Editor
-    0&&PUBNUB.css( editor, {
-        top  : offset( target, 'Top' )  + 50,
-        left : offset( target, 'Left' ) - 25
-    } );
-
+    // Show Editor GUI
+    PUBNUB.attr( input, 'directive', id );
     show_editor(true);
-    input.value = startupmetrics[id] || '';
-    setTimeout( function(){input.focus()}, 250 );
+    input.value = startupmetrics[id] || target.innerHTML;
+    setTimeout( function(){input.focus();input.select()}, 250 );
 
-    console.log(target);
     return true;
 } );
 
@@ -131,9 +156,28 @@ function show_editor(yes) {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Editor Controls - SAVE
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('editor-save'), function() {
-    show_editor(false);
+PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('editor-save'), save_edits );
+PUBNUB.bind( 'keydown', PUBNUB.$('editor-input'), function(e) {
+    if ((e.keyCode || e.charCode) !== 13) return true;
+    save_edits();
+    return false;
 } );
+
+function save_edits() {
+    var input  = PUBNUB.$('editor-input')
+    ,   id     = PUBNUB.attr( input, 'directive' )
+    ,   target = PUBNUB.$(id)
+    ,   value  = PUBNUB.$('editor-input').value
+    ,   modify = {};
+
+    if (!value) return;
+
+    // Save Change
+    modify[id] = value;
+    save( modify, true );
+
+    show_editor(false);
+}
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Editor Controls - CANCEL
