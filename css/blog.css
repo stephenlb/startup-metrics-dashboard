@@ -1,3 +1,9 @@
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* Section Header */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#title, #subtitle {
+    cursor: pointer;
+}
 .section-header {
     margin: 50px 0;
     font-size: 16px;
@@ -19,6 +25,9 @@
     color: #fff;
 }
 
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* Vanity Metrics */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 .vanity-table {
     text-align: center;
     margin: 20px 0 50px 0;
@@ -63,6 +72,9 @@
     height: 50px;
 }
 
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* Footer like Area */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 .super-header {
     opacity: 0.7;
     color: #c02024;
@@ -90,15 +102,42 @@
 }
 
 .pubnub-logo {
+    cursor: pointer;
     position: absolute;
     top: 0px;
     right: 0px;
     background: url(../img/pubnub.png);
     background-size: 100%;
     background-repeat: no-repeat;
-    height: 19px;
+    height: 200px;
     width: 86px;
 }
 .relative {
     position: relative;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* Editor */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.editor {
+    position: absolute;
+    display: none;
+    width: 100%;
+    z-index: 1000;
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+}
+.editor-text-border {
+    display: inline-block;
+    width: 500px;
+    margin: 460px 0px;
+    background: url(../img/blog-bg.jpg);
+    background-position: 200px -300px;
+    border: 2px solid #ffe7e7;
+    border-radius: 6px;
+    padding: 30px;
+}
+#editor-cancel {
+    border-radius: 100px;
+    font-weight: 800;
 }

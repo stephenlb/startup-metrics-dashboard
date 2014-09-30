@@ -9,3 +9,17 @@ for your business and customers,
 and how to apply it to your product and marketing efforts.
 The "pirate" part comes from the 5 steps:
 Acquisition, Activation, Retention, Referral, and Revenue (AARRR!)
+
+
+
+ 1. Programmattically update with PubNub MSG
+ 1. GUI update
+ 1. Logo
+ 1. GitHub
+ 1. Startup Name
+ 1. Settings 
+ 1. channel by URL?
+ 1. 
+ 1. 
+ 1. 
+ 1. 

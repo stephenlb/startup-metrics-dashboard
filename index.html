@@ -11,14 +11,41 @@
 <body>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- Editor -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
+<div class="relative">
+<div id="editor" class="editor">
+    <div class="editor-text-border">
+        <div class="row">
+            <div class="col-xs-8">
+                <input id="editor-input" class="form-control editor-input">
+            </div>
+            <div class="col-xs-2">
+                <button id="editor-save" class="btn btn-success">Save</button>
+            </div>
+            <div class="col-xs-1">
+                <button id="editor-cancel" class="btn btn-danger">X</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- Startup Metric Circles -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 
 <div class="container">
     <div class="section-header">
-        <div class="relative"><div class="pubnub-logo"></div></div>
-        Startup <strong>Metrics</strong>
-        <span> &nbsp; |&nbsp; Weekly Goals </span>
+        <div class="relative">
+            <div id="logo_img" class="pubnub-logo"></div>
+        </div>
+        <ptitle id="title">Startup</ptitle> <strong>Metrics</strong>
+        <span>
+            &nbsp; |&nbsp;
+            <ptitle id="subtitle">Weekly Goals</ptitle>
+        </span>
     </div>
 </div>
 
@@ -81,7 +108,7 @@
 
         <!-- Retention -->
         <div class="col-xs-3">
-            <div id="pc_retention" class="c100 p50 big cyan">
+            <div id="pc_retention" class="c100 p50 big lime">
                 <span id="percent_retention">50<sup>%</sup></span>
                 <div class="title">retention</div>
                 <div class="allstars">
@@ -108,7 +135,7 @@
 
         <!-- Revenue -->
         <div class="col-xs-3">
-            <div id="pc_revenue" class="c100 p50 big cyan">
+            <div id="pc_revenue" class="c100 p50 big orange">
                 <span id="percent_revenue">50<sup>%</sup></span>
                 <div class="title">revenue</div>
                 <div class="allstars">
@@ -207,6 +234,7 @@
     </div>
 </div>
 
+
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- M.E.T.R.I.C.S -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
@@ -221,7 +249,7 @@
         B 
     </div>
     <div class="super-sub-header">
-        metrics
+        <strong>startup</strong> metrics
     </div>
 </div>
 
