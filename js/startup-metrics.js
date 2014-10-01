@@ -29,20 +29,20 @@ var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
     'vanity-four'    : 'STACKOVERFLOW',
 
     // Acquisition
-    acquisition      : 2,
-    acquisition_goal : 4,
+    acquisition      : 1,
+    acquisition_goal : 1,
 
     // Activation
-    activation       : 2,
-    activation_goal  : 3,
+    activation       : 1,
+    activation_goal  : 1,
 
     // Retention
-    retention        : 15,
-    retention_goal   : 7,
+    retention        : 1,
+    retention_goal   : 1,
 
     // Revenue
-    revenue          : 12,
-    revenue_goal     : 9,
+    revenue          : 1,
+    revenue_goal     : 1,
 
     // Referrals
     mentions         : 1,
@@ -84,8 +84,30 @@ function update_metrics(startup) {
             'background-image' : 'url('+value+')'
         } );
 
-        // Set Inner HTML
-        display.innerHTML = value;
+    //function update_display( display, value ) {
+        // Set Display for Awesome?
+        var original = display.innerHTML
+        ,   upcoming = PUBNUB.attr( display, 'upcoming' );
+
+        !!(+original+ +value) &&
+        original != value     &&
+        upcoming != value      ? (function(){
+            var frame = 0.0
+            ,   total = 15
+            ,   ori   = +original
+            ,   val   = +value;
+
+            function updater(frame) { setTimeout( function() {
+                display.innerHTML = Math.ceil(ori + (val - ori) * (frame / total));
+                console.log(Math.ceil(ori + (val - ori) * (frame / total)));
+            }, frame * 180 ) }
+
+            while (frame <= total) updater(frame++);
+
+        })() : (display.innerHTML = value);
+
+        // Save Upcoming Value
+        PUBNUB.attr( display, 'upcoming', value );
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
@@ -94,6 +116,7 @@ function update_metrics(startup) {
         ,   metric_value = startup[metric_name]
         ,   metric_goal  = value;
 
+        // Update GUI Percent Circle Metrics
         update_circle_metrics( metric_name, metric_value, metric_goal );
     } );
 }
@@ -102,10 +125,11 @@ function update_metrics(startup) {
 // Save Startup Metrics
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function save( modification, broadcast ) {
-    console.log( 'modification',modification);
     PUBNUB.each( modification, function( k, v ) { startupmetrics[k] = v } );
     PUBNUB.db.set( settings.channel, JSON.stringify(startupmetrics) );
-    update_metrics(startupmetrics);
+    update_metrics(modification);
+    console.log('SAVE');
+
     if (!broadcast) return;
     pubnub.publish({ channel : settings.channel, message : startupmetrics });
 }
@@ -177,6 +201,7 @@ function save_edits() {
     save( modify, true );
 
     show_editor(false);
+    return false;
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

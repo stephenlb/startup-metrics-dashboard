@@ -101,6 +101,14 @@
   font-weight: 100;
   line-height: 0.66em;
 }
+.c100 div.raw-values sup span {
+  text-align: left;
+}
+.c100 div.raw-values span {
+  text-align: right;
+  display: inline-block;
+  width: 80px;
+}
 .raw-values {
   cursor: pointer;
   z-index: 100;
@@ -110,12 +118,31 @@
   cursor: pointer;
   padding-top: 148px;
   width: 100%;
+  min-height: 30px;
   z-index: 2;
   font-size: 0.08em;
   font-weight: 200;
   color: rgba(0,0,0,0.2);
   text-align: center;
   white-space: nowrap;
+}
+
+.p100 div.trophies {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  padding-top: 0px;
+  font-size: 0em;
+  line-height: 0em;
+  text-align: center;
+  white-space: nowrap;
+}
+.p100 div.trophies div.trophy {
+  display: inline-block;
+  background: transparent url(../img/trophy.png);
+  background-size: 100%;
+  width: 43px;
+  height: 60px;
 }
 
 .c100 div.allstars {
@@ -150,6 +177,12 @@ div.allstars div.star {
         starfall 1.6s 0.8s,
         starshine 1s 0s infinite alternate ease-in-out;
 }
+.trophyshine {
+    -webkit-animation: 
+        starfall 1.4s 1.0s,
+        starshine 2s 0s infinite alternate ease-in-out;
+}
+.trophyhvr { -webkit-animation: starhover 2s infinite alternate ease-in-out; }
 .starhover { -webkit-animation: starhover 1s infinite alternate ease-in-out; }
 .starhover { display: inline-block; }
 @-webkit-keyframes starshine {
@@ -208,7 +241,12 @@ div.allstars div.star {
   width: 0.97em;
   height: 0.97em;
 
-  /*-webkit-animation: rainbow 0.5s infinite normal ease-in-out;*/
+}
+.p100 {
+  -webkit-animation: rainbow 0.4s 7 normal ease-in-out;
+}
+.p100:after {
+  -webkit-animation: rainbow 0.5s 2 normal ease-in-out;
 }
 .c100 .slice {
   position: absolute;
