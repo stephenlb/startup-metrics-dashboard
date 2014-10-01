@@ -32,6 +32,21 @@
     text-align: center;
     margin: 20px 0 50px 0;
 }
+.money:before,
+.percent:after {
+    position: relative;
+    font-weight: 100;
+    top: -1.0em;
+    font-size: 0.5em;
+}
+.money:before {
+    content: '$';
+    color: rgba(200,230,200,0.9);
+}
+.percent:after {
+    content: '%';
+    color: rgba(200,200,200,0.5);
+}
 .vanity-plus {
     position: absolute;
     top: 2px;

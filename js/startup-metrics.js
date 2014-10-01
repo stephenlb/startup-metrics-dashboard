@@ -23,10 +23,10 @@ var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
     logo_img         : "img/pubnub.png",
 
     // Vanity Labels
-    'vanity-one'     : 'MENTIONS',
-    'vanity-two'     : 'ATTENDEES',
-    'vanity-three'   : 'ARTICLES',
-    'vanity-four'    : 'STACKOVERFLOW',
+    vanity_one       : 'MENTIONS',
+    vanity_two       : 'ATTENDEES',
+    vanity_three     : 'ARTICLES',
+    vanity_four      : 'STACKOVERFLOW',
 
     // Acquisition
     acquisition      : 1,
@@ -106,7 +106,11 @@ function update_display( display, value ) {
     var original = display.innerHTML
     ,   upcoming = PUBNUB.attr( display, 'upcoming' );
 
-    if (upcoming === value) return;
+    // Save Upcoming Value
+    if (upcoming == value) return;
+    PUBNUB.attr( display, 'upcoming', value );
+
+    // Render Display
     if (!!(+original+ +value) && original != value) (function(){
         var frame = 1.0
         ,   total = 15
@@ -122,9 +126,6 @@ function update_display( display, value ) {
         while (frame <= total) updater(frame++);
 
     })(); else display.innerHTML = value;
-
-    // Save Upcoming Value
-    PUBNUB.attr( display, 'upcoming', value );
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -133,8 +134,7 @@ function update_display( display, value ) {
 function save( modification, broadcast ) {
     PUBNUB.each( modification, function( k, v ) { startupmetrics[k] = v } );
     PUBNUB.db.set( settings.channel, JSON.stringify(startupmetrics) );
-    update_metrics(modification);
-    console.log('SAVE');
+    update_metrics(startupmetrics);
 
     if (!broadcast) return;
     pubnub.publish({ channel : settings.channel, message : startupmetrics });
@@ -146,19 +146,13 @@ function save( modification, broadcast ) {
 function update_circle_metrics( name, value, goal ) {
     var circle  = PUBNUB.$('pc_'+name)
     ,   percent = PUBNUB.$('percent_'+name)
-    ,   result  = Math.ceil( (+value / +goal) * 100 )
+    ,   result  = Math.ceil( (+value / (+goal||1)) * 100 )
     ,   resmax  = (result > 999 ? 999 : result)
     ,   pclass  = ' p' + (result > 100 ? 100 : result);
 
-    circle.className  = circle.className.replace( / p[^ ]+/, ' p00' );
-    circle.className  = circle.className.replace( / p[^ ]+/, pclass );
-//.innerHTML =  + '<sup>%</sup>';
-//.innerHTML =  + '<sup>%</sup>';
-//.innerHTML =  + '<sup>%</sup>';
-//.innerHTML =  + '<sup>%</sup>';
-//.innerHTML =  + '<sup>%</sup>';
-//.innerHTML =  + '<sup>%</sup>';
-//.innerHTML =  + '<sup>%</sup>';
+    circle.className = circle.className.replace( / p[^ ]+/, ' p00' );
+    circle.className = circle.className.replace( / p[^ ]+/, pclass );
+
     update_display( percent, resmax )
 }
 
@@ -177,7 +171,10 @@ PUBNUB.bind( 'mousedown,touchstart', document, function(element) {
     // Show Editor GUI
     PUBNUB.attr( input, 'directive', id );
     show_editor(true);
-    input.value = startupmetrics[id] || target.innerHTML;
+
+    input.value = startupmetrics[id] ||
+        target.innerHTML.replace(/^\s+|\s+$/g,'');
+
     setTimeout( function(){input.focus();input.select()}, 250 );
 
     return true;
