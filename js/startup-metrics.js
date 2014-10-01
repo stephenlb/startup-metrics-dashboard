@@ -94,8 +94,8 @@ function update_metrics(startup) {
             metric === 'revenue' &&
             +value               &&
             +display.innerHTML   &&
-            +value > +display.innerHTML
-        ) ring_bell();
+            +value > (+display.innerHTML)
+        ) { console.log(value,+display.innerHTML,metric); ring_bell();}
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
@@ -204,6 +204,7 @@ window.ring_bell = ring_bell;
 function ring_bell() {
     // Prevent Early Sales Bell on Boot
     if (starttime + salebellwait > now()) return;
+    starttime = now();
 
     // Play Sales Bell Sound "money.mp3" or "money.ogg"
     sounds.play( 'sounds/money', 16000 );
