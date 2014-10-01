@@ -209,3 +209,34 @@
     50%   { -webkit-transform: translateY(-50px); }
     100%  { -webkit-transform: translateY(0px); }
 }
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* Editable Hover */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.editable:hover:before {
+    position: relative;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+.editable:hover:after {
+    position: absolute;
+    content: 'editable';
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: none;
+    text-shadow:
+        0px 0px 4px rgba(0,0,0,0.2),
+        0px 0px 6px rgba(0,0,0,0.2);
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 400;
+    border-radius: 20px;
+    margin: 1px 2px;
+    padding: 2px 8px;
+    border: 2px solid rgba(244, 194, 72,0.8);
+    background-color: rgba(204,234,30,0.8);
+}
+
