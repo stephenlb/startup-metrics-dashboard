@@ -192,9 +192,12 @@ function show_editor(yes) {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('editor-save'), save_edits );
 PUBNUB.bind( 'keydown', PUBNUB.$('editor-input'), function(e) {
-    if ((e.keyCode || e.charCode) !== 13) return true;
-    save_edits();
-    return false;
+    var charcode = (e.keyCode || e.charCode);
+
+    if (charcode === 27) return show_editor(false);
+    if (charcode !== 13) return true;
+
+    return save_edits();
 } );
 
 function save_edits() {
