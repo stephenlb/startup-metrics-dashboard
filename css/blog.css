@@ -156,3 +156,56 @@
     border-radius: 100px;
     font-weight: 800;
 }
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* Sales Bell */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#salesbell {
+    display: none;
+    opacity: 0;
+    z-index: 5000;
+
+    -webkit-transition: opacity 2s;
+    -moz-transition: opacity 2s;
+    -ms-transition: opacity 2s;
+    -o-transition: opacity 2s;
+    transition: opacity 2s;
+}
+.sales-bell-container {
+    position: absolute;
+    z-index: 5000;
+    width: 100%;
+    text-align: center;
+}
+.sales-bell-starburst {
+    z-index: 5000;
+    margin: 0;
+    display: inline-block;
+    background: url(../img/starburst.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 1090px;
+    height: 860px;
+}
+.sales-bell-money {
+    z-index: 6000;
+    margin: 100px 0 0 0;
+    display: inline-block;
+    background: url(../img/money.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 512px;
+}
+
+.moneyhover { -webkit-animation: moneyhover 2s infinite normal ease-in-out; }
+.starburst  { -webkit-animation: starburst 10s infinite normal linear; }
+@-webkit-keyframes starburst {
+    0%    { -webkit-transform: rotate(0deg);   }
+    100%  { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes moneyhover {
+    0%    { -webkit-transform: translateY(0px); }
+    50%   { -webkit-transform: translateY(-50px); }
+    100%  { -webkit-transform: translateY(0px); }
+}

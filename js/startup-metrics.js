@@ -10,7 +10,9 @@ var settings = {
     channel       : urlsetting()
 };
 
-var pubnub = PUBNUB(settings);
+var pubnub       = PUBNUB(settings);
+var starttime    = now();
+var salebellwait = 2000;
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Startup Metrics Default Dashboard Position
@@ -86,6 +88,9 @@ function update_metrics(startup) {
 
         // Set Display for Awesome?
         update_display( display, value );
+
+        // Revenue Money Sales Bell
+        if (metric === 'revenue') ring_bell();
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
@@ -188,9 +193,36 @@ function show_editor(yes) {
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Sales Bell
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+window.ring_bell = ring_bell;
+function ring_bell() {
+    // Prevent Early Sales Bell on Boot
+    if (starttime + salebellwait > now()) return;
+
+    // Play Sales Bell Sound "money.mp3" or "money.ogg"
+    sounds.play( 'sounds/money', 16000 );
+
+    // Display Animation
+    var bell = PUBNUB.$('salesbell');
+
+    PUBNUB.css( bell, { opacity : 0.0, display : 'block' } );
+    setTimeout( function() {
+        PUBNUB.css( bell, { opacity : 1.0 } );
+    }, 500 );
+
+    setTimeout( function() {
+        PUBNUB.css( bell, { opacity : 0.0 } );
+    }, 12000 );
+    setTimeout( function() {
+        PUBNUB.css( bell, { display : 'none' } );
+    }, 14000 );
+}
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Editor Controls - SAVE
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('editor-save'), save_edits );
+PUBNUB.bind( 'click', PUBNUB.$('editor-save'), save_edits );
 PUBNUB.bind( 'keydown', PUBNUB.$('editor-input'), function(e) {
     var charcode = (e.keyCode || e.charCode);
 
@@ -220,7 +252,7 @@ function save_edits() {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Editor Controls - CANCEL
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-PUBNUB.bind( 'mousedown,touchstart', PUBNUB.$('editor-cancel'), function() {
+PUBNUB.bind( 'click', PUBNUB.$('editor-cancel'), function() {
     show_editor(false);
 } );
 
@@ -239,6 +271,10 @@ function offset( node, what ) {
     return pos;
 }
 
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Right Now
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function now() { return+new Date() }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // URL Param Setting
