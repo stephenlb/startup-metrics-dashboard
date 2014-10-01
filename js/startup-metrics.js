@@ -95,7 +95,7 @@ function update_metrics(startup) {
             +value               &&
             +display.innerHTML   &&
             +value > (+display.innerHTML)
-        ) { console.log(value,+display.innerHTML,metric); ring_bell();}
+        ) ring_bell();
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
