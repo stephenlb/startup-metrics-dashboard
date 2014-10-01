@@ -84,30 +84,8 @@ function update_metrics(startup) {
             'background-image' : 'url('+value+')'
         } );
 
-    //function update_display( display, value ) {
         // Set Display for Awesome?
-        var original = display.innerHTML
-        ,   upcoming = PUBNUB.attr( display, 'upcoming' );
-
-        !!(+original+ +value) &&
-        original != value     &&
-        upcoming != value      ? (function(){
-            var frame = 0.0
-            ,   total = 15
-            ,   ori   = +original
-            ,   val   = +value;
-
-            function updater(frame) { setTimeout( function() {
-                display.innerHTML = Math.ceil(ori + (val - ori) * (frame / total));
-                console.log(Math.ceil(ori + (val - ori) * (frame / total)));
-            }, frame * 180 ) }
-
-            while (frame <= total) updater(frame++);
-
-        })() : (display.innerHTML = value);
-
-        // Save Upcoming Value
-        PUBNUB.attr( display, 'upcoming', value );
+        update_display( display, value );
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
@@ -119,6 +97,34 @@ function update_metrics(startup) {
         // Update GUI Percent Circle Metrics
         update_circle_metrics( metric_name, metric_value, metric_goal );
     } );
+}
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Visually Update Startup Metrics with Maybe Animations
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function update_display( display, value ) {
+    var original = display.innerHTML
+    ,   upcoming = PUBNUB.attr( display, 'upcoming' );
+
+    if (upcoming === value) return;
+    if (!!(+original+ +value) && original != value) (function(){
+        var frame = 1.0
+        ,   total = 15
+        ,   ori   = +original
+        ,   val   = +value;
+
+        function updater(frame) { setTimeout( function() {
+            display.innerHTML = Math.ceil(
+                ori + (val - ori) * (frame / total)
+            );
+        }, frame * 180 ) }
+
+        while (frame <= total) updater(frame++);
+
+    })(); else display.innerHTML = value;
+
+    // Save Upcoming Value
+    PUBNUB.attr( display, 'upcoming', value );
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -146,7 +152,14 @@ function update_circle_metrics( name, value, goal ) {
 
     circle.className  = circle.className.replace( / p[^ ]+/, ' p00' );
     circle.className  = circle.className.replace( / p[^ ]+/, pclass );
-    percent.innerHTML = resmax + '<sup>%</sup>';
+//.innerHTML =  + '<sup>%</sup>';
+//.innerHTML =  + '<sup>%</sup>';
+//.innerHTML =  + '<sup>%</sup>';
+//.innerHTML =  + '<sup>%</sup>';
+//.innerHTML =  + '<sup>%</sup>';
+//.innerHTML =  + '<sup>%</sup>';
+//.innerHTML =  + '<sup>%</sup>';
+    update_display( percent, resmax )
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -237,7 +250,6 @@ function urlsetting() {
     if (location.href.indexOf(spliter) < 0) return standard;
     return location.href.split(spliter)[1].split('&')[0] || standard;
 }
-
 
 
 })();
