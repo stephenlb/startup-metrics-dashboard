@@ -90,7 +90,12 @@ function update_metrics(startup) {
         update_display( display, value );
 
         // Revenue Money Sales Bell
-        if (metric === 'revenue') ring_bell();
+        if (
+            metric === 'revenue' &&
+            +value               &&
+            +display.innerHTML   &&
+            +value > +display.innerHTML
+        ) ring_bell();
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
