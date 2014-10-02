@@ -12,7 +12,7 @@ var settings = {
 
 var pubnub       = PUBNUB(settings);
 var starttime    = now();
-var salebellwait = 2000;
+var salebellwait = 3000;
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Startup Metrics Default Dashboard Position
@@ -203,8 +203,10 @@ function show_editor(yes) {
 window.ring_bell = ring_bell;
 function ring_bell() {
     // Prevent Early Sales Bell on Boot
-    if (starttime + salebellwait > now()) return;
-    starttime = now();
+    if (starttime + salebellwait > now()) {
+        starttime = now();
+        return;
+    }
 
     // Play Sales Bell Sound "money.mp3" or "money.ogg"
     sounds.play( 'sounds/money', 16000 );
