@@ -12,6 +12,7 @@ var settings = {
 
 var pubnub       = PUBNUB(settings);
 var starttime    = now();
+var genstarttime = now();
 var salebellwait = 3000;
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -86,15 +87,20 @@ function update_metrics(startup) {
             'background-image' : 'url('+value+')'
         } );
 
+        // Revenue Money Sales Bell
+        if (
+            metric === 'revenue'           &&
+            +value                         &&
+            +display.innerHTML             &&
+            +value != (+display.innerHTML) &&
+            +value != (+PUBNUB.attr( display, 'upcoming' ))
+        ) ring_bell( +value < (+display.innerHTML) );
+
         // Set Display for Awesome?
         update_display( display, value );
 
-        // Revenue Money Sales Bell
-        if (
-            metric === 'revenue' &&
-            +value               &&
-            +display.innerHTML
-        ) ring_bell( +value < (+display.innerHTML) );
+        // Generic Update Sound
+        update_sound(metric);
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
@@ -197,15 +203,32 @@ function show_editor(yes) {
 }
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// Generic Update Sound
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+function update_sound(metric) {
+    if (genstarttime + salebellwait > now()) return;
+    if (
+        metric === 'acquisition' ||
+        metric === 'activation'  ||
+        metric === 'retention'   ||
+        metric === 'mentions'    ||
+        metric === 'attendees'   ||
+        metric === 'articles'    ||
+        metric === 'stackoverflow'
+    ) {
+        sounds.play( 'sounds/success', 2000 );
+        genstarttime = now();
+    }
+}
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 // Sales Bell
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 window.ring_bell = ring_bell;
 function ring_bell(downd) {
     // Prevent Early Sales Bell on Boot
-    if (starttime + salebellwait > now()) {
-        starttime = now();
-        return;
-    }
+    if (starttime + salebellwait > now()) return;
+    starttime = now();
 
     // Play Sales Bell Sound "money.mp3" or "money.ogg"
     if (!downd) sounds.play( 'sounds/money',    16000 );
