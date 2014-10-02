@@ -205,6 +205,7 @@ function ring_bell() {
     // Prevent Early Sales Bell on Boot
     if (starttime + salebellwait > now()) {
         starttime = now();
+        salebellwait = 12000;
         return;
     }
 
