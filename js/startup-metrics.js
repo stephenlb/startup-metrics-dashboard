@@ -93,9 +93,8 @@ function update_metrics(startup) {
         if (
             metric === 'revenue' &&
             +value               &&
-            +display.innerHTML   &&
-            +value > (+display.innerHTML)
-        ) ring_bell();
+            +display.innerHTML
+        ) ring_bell( +value < (+display.innerHTML) );
 
         // Percentage Display if Relevant
         if (metric.indexOf('_goal') < 0) return;
@@ -201,16 +200,16 @@ function show_editor(yes) {
 // Sales Bell
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 window.ring_bell = ring_bell;
-function ring_bell() {
+function ring_bell(downd) {
     // Prevent Early Sales Bell on Boot
     if (starttime + salebellwait > now()) {
         starttime = now();
-        salebellwait = 12000;
         return;
     }
 
     // Play Sales Bell Sound "money.mp3" or "money.ogg"
-    sounds.play( 'sounds/money', 16000 );
+    if (!downd) sounds.play( 'sounds/money',    16000 );
+    else return sounds.play( 'sounds/decrement', 2000 );
 
     // Display Animation
     var bell = PUBNUB.$('salesbell');
