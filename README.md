@@ -5,7 +5,9 @@ metrics framework for your business and customers,
 and how to apply it to your product and marketing efforts.
 Acquisition, Activation, Retention, Referral, and Revenue (AARRR!)
 
-![PubNub Startup Metrics Dashboard](http://pubnub.s3.amazonaws.com/assets/startup-metrics-dasbhoard-video.gif)
+#### See for Yourself
+
+[![PubNub Startup Metrics Dashboard](http://pubnub.s3.amazonaws.com/assets/startup-metrics-dasbhoard-video.gif)](http://stephenlb.github.io/startup-metrics-dashboard/)
 
 ### Let's make your Metrics Realtime
 
@@ -17,4 +19,4 @@ Simplify with a purpose built realtime dashboard.
 [Startup Metrics for Pirates](
 http://www.slideshare.net/dmc500hats/startup-metrics-for-pirates-long-version)
 by Dave McClure, venture capitalist, entrepreneur,
-internet marketing, blowhard at 500 Startups.
+internet marketing at 500 Startups.
