@@ -5,6 +5,8 @@ metrics framework for your business and customers,
 and how to apply it to your product and marketing efforts.
 Acquisition, Activation, Retention, Referral, and Revenue (AARRR!)
 
+![PubNub Startup Metrics Dashboard](http://pubnub.s3.amazonaws.com/assets/startup-metrics-dasbhoard-video.gif)
+
 ### Let's make your Metrics Realtime
 
 Monitoring your business metrics is complex.
