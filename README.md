@@ -57,7 +57,7 @@ You can change the dashboard in realtime with any `PubNub` SDK.
 This is the schema for which you can modify any value to
 send a signal to the dashboard instantly to change.
 
-```
+```javascript
 // Whitelable your Dashboard
 title            : "Startup",
 subtitle         : "Weekly Goals",
