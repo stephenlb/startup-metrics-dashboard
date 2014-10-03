@@ -4,6 +4,8 @@
 
 > Live Demo: [Startup Dashboard](http://stephenlb.github.io/startup-metrics-dashboard/)
 
+> Product Hunt: [Startup Metrics Dashboard](http://www.producthunt.com/posts/startup-metrics-dashboard)
+
 This is a 5-step model for using Dave McClure's 
 metrics framework for your business and customers,
 and how to apply it to your product and marketing efforts.
