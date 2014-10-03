@@ -13,7 +13,7 @@ Acquisition, Activation, Retention, Referral, and Revenue (AARRR!)
 
 #### See for Yourself
 
-[![PubNub Startup Metrics Dashboard](http://pubnub.s3.amazonaws.com/assets/startup-metrics-dasbhoard-video.gif)](http://stephenlb.github.io/startup-metrics-dashboard/)
+[![PubNub Startup Metrics Dashboard](http://pubnub.s3.amazonaws.com/assets/startup-metrics-dasbhoard-video-4.gif)](http://www.pubnub.com/developers/demos/startup-metrics-dashboard/)
 
 ### Let's make your Metrics Realtime
 
