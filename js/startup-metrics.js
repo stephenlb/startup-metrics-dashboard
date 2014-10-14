@@ -27,8 +27,8 @@ var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
 
     // Vanity Labels
     vanity_one       : 'MENTIONS',
-    vanity_two       : 'ATTENDEES',
-    vanity_three     : 'ARTICLES',
+    vanity_two       : 'FOLLOWERS',
+    vanity_three     : 'COMMENTS',
     vanity_four      : 'STACKOVERFLOW',
 
     // Acquisition
@@ -36,22 +36,22 @@ var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
     acquisition_goal : 100,
 
     // Activation
-    activation       : 1,
-    activation_goal  : 1,
+    activation       : 10,
+    activation_goal  : 20,
 
     // Retention
-    retention        : 1,
-    retention_goal   : 1,
+    retention        : 189,
+    retention_goal   : 250,
 
     // Revenue
-    revenue          : 1,
-    revenue_goal     : 1,
+    revenue          : 890,
+    revenue_goal     : 1200,
 
     // Referrals
-    mentions         : 1,
-    attendees        : 1,
-    articles         : 1,
-    stackoverflow    : 1
+    mentions         : 342,
+    attendees        : 89,
+    articles         : 45,
+    stackoverflow    : 8
 
 };
 
