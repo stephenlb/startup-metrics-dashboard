@@ -22,7 +22,7 @@ var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
 
     // Whitelable
     title            : "Startup",
-    subtitle         : "Weekly Goals",
+    subtitle         : "I'M SO FANCY",
     logo_img         : "img/pubnub.png",
 
     // Vanity Labels
@@ -40,7 +40,7 @@ var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
     activation_goal  : 20,
 
     // Retention
-    retention        : 189,
+    retention        : 289,
     retention_goal   : 250,
 
     // Revenue
