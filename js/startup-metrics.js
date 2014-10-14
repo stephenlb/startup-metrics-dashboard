@@ -32,8 +32,8 @@ var startupmetrics = JSON.parse(PUBNUB.db.get(settings.channel)) || {
     vanity_four      : 'STACKOVERFLOW',
 
     // Acquisition
-    acquisition      : 1,
-    acquisition_goal : 1,
+    acquisition      : 55,
+    acquisition_goal : 100,
 
     // Activation
     activation       : 1,
@@ -133,7 +133,7 @@ function update_display( display, value ) {
         ,   val   = +value;
 
         function updater(frame) { setTimeout( function() {
-            display.innerHTML = Math.ceil(
+            display.innerHTML = Math.floor(
                 ori + (val - ori) * (frame / total)
             );
         }, frame * 180 ) }
@@ -161,7 +161,7 @@ function save( modification, broadcast ) {
 function update_circle_metrics( name, value, goal ) {
     var circle  = PUBNUB.$('pc_'+name)
     ,   percent = PUBNUB.$('percent_'+name)
-    ,   result  = Math.ceil( (+value / (+goal||1)) * 100 )
+    ,   result  = Math.floor( (+value / (+goal||1)) * 100 )
     ,   resmax  = (result > 999 ? 999 : result)
     ,   pclass  = ' p' + (result > 100 ? 100 : result);
 
@@ -311,7 +311,7 @@ function now() { return+new Date() }
 // URL Param Setting
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 function urlsetting() {
-    var standard = 'standard'
+    var standard = 'standard-' + now()
     ,   spliter  = '?company=';
 
     if (location.href.indexOf(spliter) < 0) return standard;
