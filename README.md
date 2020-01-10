@@ -1,7 +1,5 @@
 # PubNub Startup Metrics Dashboard
 
-> Home Page: [PubNub Startup Metrics Dashboard](http://www.pubnub.com/developers/demos/startup-metrics-dashboard/)
-
 > Live Demo: [Startup Dashboard](http://stephenlb.github.io/startup-metrics-dashboard/)
 
 > Product Hunt: [Startup Metrics Dashboard](http://www.producthunt.com/posts/startup-metrics-dashboard)
